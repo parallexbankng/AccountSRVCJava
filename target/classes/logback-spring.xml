@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration >
+	<!--<property name="DEV_HOME" value="/LOG/system/nibssqrcode/logs/" />-->
+	<property name="PROD_HOME" value="C:/AppLog/accountOpeningCifAcct/logs" />
+	
+
+	<appender name="accountOpeningCifAcctFileAppenderDebug"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${PROD_HOME}/accountOpeningCifAcct.log.debug</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				 %level %d{yyyy-MM-dd HH:mm:ss} [%thread] : %class %L - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${PROD_HOME}/accountOpeningCifAcct.log.%d{yyyy-MM-dd}.%i.debug
+                        </fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+	</appender>
+
+	<appender name="accountOpeningCifAcctFileAppenderInfo"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${PROD_HOME}/accountOpeningCifAcct.log.info</file>
+				<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				 %level %d{yyyy-MM-dd HH:mm:ss} [%thread] : %class %L - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${PROD_HOME}/accountOpeningCifAcct.log.%d{yyyy-MM-dd}.%i.info
+                        </fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+	</appender>
+
+
+	<appender name="accountOpeningCifAcctFileAppenderError"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${PROD_HOME}/accountOpeningCifAcct.log.error</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				 %level %d{yyyy-MM-dd HH:mm:ss} [%thread] : %class %L - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${PROD_HOME}/accountOpeningCifAcct.log.%d{yyyy-MM-dd}.%i.error
+                        </fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+	</appender>
+
+
+	<logger name="com.parallex.accountopening" level="DEBUG"
+		additivity="false">
+		<appender-ref ref="accountOpeningCifAcctFileAppenderDebug" />
+		<appender-ref ref="accountOpeningCifAcctFileAppenderInfo" />
+		<appender-ref ref="accountOpeningCifAcctFileAppenderError" />
+	</logger>
+	
+	
+</configuration>
